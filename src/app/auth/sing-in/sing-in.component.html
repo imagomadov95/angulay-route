@@ -1,0 +1,30 @@
+<section>
+  <div class="wrapper">
+    <form name="vhod" method="post">
+      <h2>Войти</h2>
+      <fieldset>
+        <div class="item">
+          <label for="email-field">E-mail</label>
+          <input
+            [(ngModel)]="userEmail"
+            type="email"
+            id="email-field"
+            name="email"
+          />
+        </div>
+        <div class="item">
+          <label for="password-field">Пароль</label>
+          <input
+            [(ngModel)]="userPassword"
+            type="password"
+            id="password-field"
+            name="password"
+          />
+        </div>
+      </fieldset>
+      <button (click)="setUser(userEmail, userPassword)" type="submit">
+        Войти
+      </button>
+    </form>
+  </div>
+</section>

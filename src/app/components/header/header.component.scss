@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: auto;
+}
+
+.list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  justify-content: center;
+  background-color: burlywood;
+}
+
+.el {
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.active-link {
+  color: white;
+}
