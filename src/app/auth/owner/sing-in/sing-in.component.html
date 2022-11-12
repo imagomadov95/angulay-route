@@ -1,18 +1,8 @@
 <section>
   <div class="wrapper">
-    <form name="vhod" method="post">
-      <h2>Регистрация</h2>
+    <form name="vhod">
+      <h2>Войти</h2>
       <fieldset>
-        <div class="item">
-          <label for="name-field">Name</label>
-          <input
-            [(ngModel)]="userName"
-            type="name"
-            id="name-field"
-            name="name"
-          />
-        </div>
-
         <div class="item">
           <label for="email-field">E-mail</label>
           <input
@@ -32,11 +22,8 @@
           />
         </div>
       </fieldset>
-      <button
-        (click)="addUser(userName, userEmail, userPassword)"
-        type="submit"
-      >
-        Зарегистрироваться
+      <button (click)="setUser(userEmail, userPassword)" type="submit">
+        Войти
       </button>
     </form>
   </div>

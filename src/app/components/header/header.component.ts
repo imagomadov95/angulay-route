@@ -12,11 +12,23 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   canExit() {
-    if (sessionStorage.getItem('useractive') === '1') {
-      sessionStorage.setItem('useractive', JSON.stringify(0));
+    let dbReq = indexedDB.open('islam', 1);
+    dbReq.onsuccess = () => {
+      let db = dbReq.result;
 
-      confirm('выйти');
-      this.router.navigate(['auth/sing-up']);
-    }
+      const transaction = db.transaction('books', 'readwrite');
+      const store = transaction.objectStore('books');
+
+      let getUseractive = store.get('musa');
+
+      getUseractive.onsuccess = () => {
+        const user = getUseractive.result;
+        user.name = '2';
+        store.put(user);
+      };
+    };
+
+    confirm('выйти');
+    this.router.navigate(['auth/sing-up']);
   }
 }

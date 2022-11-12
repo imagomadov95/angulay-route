@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SingInComponent } from './auth/sing-in/sing-in.component';
-import { SingUpComponent } from './auth/sing-up/sing-up.component';
+import { SingInComponent } from './auth/owner/sing-in/sing-in.component';
+import { SingUpComponent } from './auth/owner/sing-up/sing-up.component';
 import { BaseComponent } from './components/base/base.component';
 
 import { SettingComponent } from './components/setting/setting.component';
