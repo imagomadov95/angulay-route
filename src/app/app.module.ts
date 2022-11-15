@@ -10,7 +10,7 @@ import { BaseComponent } from './components/base/base.component';
 
 import { SettingComponent } from './components/setting/setting.component';
 import { UserComponent } from './auth/user/user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     SettingComponent,
     UserComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

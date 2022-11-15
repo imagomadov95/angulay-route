@@ -1,12 +1,12 @@
 <section>
   <div class="wrapper">
-    <form name="vhod" method="post">
+    <form [formGroup]="myForm">
       <h2>Регистрация</h2>
       <fieldset>
         <div class="item">
           <label for="name-field">Name</label>
           <input
-            [(ngModel)]="userName"
+            formControlName="name"
             type="name"
             id="name-field"
             name="name"
@@ -16,7 +16,7 @@
         <div class="item">
           <label for="email-field">E-mail</label>
           <input
-            [(ngModel)]="userEmail"
+            formControlName="email"
             type="email"
             id="email-field"
             name="email"
@@ -25,7 +25,7 @@
         <div class="item">
           <label for="password-field">Пароль</label>
           <input
-            [(ngModel)]="userPassword"
+            formControlName="password"
             type="password"
             id="password-field"
             name="password"
@@ -33,7 +33,14 @@
         </div>
       </fieldset>
       <button
-        (click)="addUserBd(userName, userEmail, userPassword)"
+        [disabled]="myForm.invalid"
+        (click)="
+          addUserBd(
+            myForm.value.name,
+            myForm.value.email,
+            myForm.value.password
+          )
+        "
         type="submit"
       >
         Зарегистрироваться

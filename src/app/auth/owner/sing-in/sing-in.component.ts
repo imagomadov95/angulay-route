@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AsyncValidatorFn,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -7,8 +13,24 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./sing-in.component.scss'],
 })
 export class SingInComponent implements OnInit {
-  userEmail: string = '';
-  userPassword: string = '';
+  emailControl = new FormControl('', {
+    asyncValidators: [myValidatorEmail as AsyncValidatorFn],
+    validators: [Validators.required, Validators.email],
+  });
+  myForm: FormGroup = new FormGroup({
+    // email: new FormControl('', [
+    //   Validators.required,
+    //   Validators.email,
+    //   Validators.minLength(5),
+    // ]),
+    email: this.emailControl,
+    password: new FormControl('', [
+      Validators.required,
+      myValidator,
+      Validators.pattern(/[A-Za-z]+/g),
+      Validators.pattern(/[0-9]+/g),
+    ]),
+  });
 
   constructor(private router: Router) {}
 
@@ -41,4 +63,27 @@ export class SingInComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  submitForm() {
+    console.log(this.myForm.value.email);
+  }
+}
+
+function myValidator(formControl: FormControl) {
+  if (formControl.value.length < 5) {
+    return { myValidator: { message: 'Ошибка' } };
+  }
+  return null;
+}
+
+function myValidatorEmail(formControl: FormControl) {
+  return Promise.resolve().then(() => {
+    if (formControl.value === localStorage.getItem('islam')) {
+      console.log('formControl:', formControl.value);
+      return null;
+    } else {
+      console.log(localStorage.getItem('islam'));
+      console.log('formControl:', formControl.value);
+      return { e: true };
+    }
+  });
 }

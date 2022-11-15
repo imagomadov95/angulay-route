@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { SingUpComponent } from './sing-up/sing-up.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [SingInComponent],
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
       { path: 'sing-up', component: SingUpComponent },
     ]),
     FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class OwnerModule {}

@@ -1,28 +1,39 @@
 <section>
   <div class="wrapper">
-    <form name="vhod">
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
       <h2>Войти</h2>
       <fieldset>
         <div class="item">
           <label for="email-field">E-mail</label>
           <input
-            [(ngModel)]="userEmail"
+            formControlName="email"
             type="email"
             id="email-field"
             name="email"
           />
+
+          <div
+            *ngIf="emailControl.invalid && emailControl.touched"
+            style="color: red"
+          >
+            Не коректный email
+          </div>
         </div>
         <div class="item">
           <label for="password-field">Пароль</label>
           <input
-            [(ngModel)]="userPassword"
+            formControlName="password"
             type="password"
             id="password-field"
             name="password"
           />
         </div>
       </fieldset>
-      <button (click)="setUser(userEmail, userPassword)" type="submit">
+      <button
+        [disabled]="myForm.invalid"
+        (click)="setUser(myForm.value.email, myForm.value.password)"
+        type="submit"
+      >
         Войти
       </button>
     </form>

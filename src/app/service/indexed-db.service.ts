@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class IndexedDBService {
+  myNumber = 6;
   addUserBd(userName: string, userEmail: string, userPassword: string) {
     let dbReq = indexedDB.open('islam', 1);
     dbReq.onupgradeneeded = () => {
